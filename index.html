@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智能家居环境监测系统 · Android 移动端原型</title>
+<style>
+  :root{ --primary:#409EFF; --dark:#304156; --gray:#909399; --bg:#f0f2f5;
+         --green:#67C23A; --red:#F56C6C; --orange:#E6A23C; --line:#ebeef5; }
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:#e9edf2; color:#303133; padding:24px; }
+  h1.title{ text-align:center; font-size:22px; color:var(--dark); margin-bottom:6px; }
+  p.sub{ text-align:center; color:var(--gray); font-size:13px; margin-bottom:22px; }
+  /* 顶部导航：屏幕切换 */
+  .nav{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; max-width:760px; margin:0 auto 24px; }
+  .nav button{ border:1px solid var(--primary); background:#fff; color:var(--primary);
+    padding:6px 12px; border-radius:16px; font-size:13px; cursor:pointer; transition:.15s; }
+  .nav button.active,.nav button:hover{ background:var(--primary); color:#fff; }
+  /* 手机框 */
+  .phone{ width:330px; height:660px; margin:0 auto; background:#fff; border:10px solid #1f1f1f;
+    border-radius:36px; overflow:hidden; position:relative; box-shadow:0 12px 40px rgba(0,0,0,.25); }
+  .notch{ position:absolute; top:0; left:50%; transform:translateX(-50%); width:120px; height:22px;
+    background:#1f1f1f; border-radius:0 0 14px 14px; z-index:30; }
+  .statusbar{ height:30px; background:var(--primary); color:#fff; display:flex; align-items:center;
+    justify-content:space-between; padding:0 16px; font-size:11px; }
+  .screen{ display:none; height:630px; overflow-y:auto; background:var(--bg); flex-direction:column; }
+  .screen.show{ display:flex; }
+  .appbar{ height:46px; background:var(--primary); color:#fff; display:flex; align-items:center;
+    justify-content:center; font-size:16px; font-weight:600; position:relative; flex:0 0 auto; }
+  .appbar .back{ position:absolute; left:12px; font-size:18px; cursor:pointer; }
+  .appbar .right{ position:absolute; right:12px; font-size:13px; cursor:pointer; }
+  .body{ padding:14px; flex:1 1 auto; }
+  /* 通用组件 */
+  .input{ width:100%; height:42px; border:1px solid var(--line); border-radius:8px; padding:0 12px;
+    margin-bottom:14px; font-size:14px; background:#fff; }
+  .btn{ width:100%; height:44px; background:var(--primary); color:#fff; border:none; border-radius:8px;
+    font-size:15px; cursor:pointer; }
+  .btn.block{ display:block; }
+  .card{ background:#fff; border-radius:10px; padding:14px; margin-bottom:12px; border:1px solid var(--line); }
+  .row{ display:flex; justify-content:space-between; align-items:center; }
+  .muted{ color:var(--gray); font-size:12px; }
+  .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px; }
+  .tag{ font-size:11px; padding:2px 8px; border-radius:10px; }
+  /* 实时数据卡片 */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .metric{ background:#fff; border-radius:12px; padding:16px 12px; text-align:center; border:1px solid var(--line); }
+  .metric.alarm{ background:#fff0f0; border-color:#fbc4c4; }
+  .metric .lbl{ color:var(--gray); font-size:13px; }
+  .metric .val{ font-size:26px; font-weight:700; margin-top:8px; }
+  .metric.alarm .val{ color:var(--red); }
+  /* 列表项 */
+  .list-item{ background:#fff; padding:14px; border-bottom:1px solid var(--line); }
+  /* 阈值行 */
+  .thr-row{ background:#fff; border-radius:10px; padding:12px; margin-bottom:10px; border:1px solid var(--line); }
+  .thr-row .ins{ display:flex; gap:8px; margin-top:8px; align-items:center; }
+  .thr-row .ins input{ flex:1; height:34px; border:1px solid var(--line); border-radius:6px; padding:0 8px; width:60px; }
+  .menu-item{ background:#fff; padding:15px; border-bottom:1px solid var(--line); display:flex;
+    justify-content:space-between; cursor:pointer; }
+  .avatar{ width:64px; height:64px; border-radius:50%; background:#fff; color:var(--primary);
+    display:flex; align-items:center; justify-content:center; font-size:30px; margin:0 auto 10px; }
+  a.link{ color:var(--primary); text-decoration:none; cursor:pointer; }
+  .center{ text-align:center; }
+</style>
+</head>
+<body>
+  <h1 class="title">智能家居环境监测系统 · Android 移动端原型</h1>
+  <p class="sub">点击下方按钮切换页面；登录、设备列表、卡片等均可点击跳转</p>
+
+  <div class="nav" id="nav"></div>
+
+  <div class="phone">
+    <div class="notch"></div>
+    <div class="statusbar"><span>9:41</span><span>智能家居监测 &nbsp; 📶 🔋</span></div>
+
+    <!-- 1. 登录 -->
+    <div class="screen show" data-screen="login">
+      <div class="appbar">智能家居环境监测</div>
+      <div class="body" style="display:flex;flex-direction:column;justify-content:center;padding:30px 22px;">
+        <div class="center" style="font-size:40px;margin-bottom:6px;">🏠</div>
+        <div class="center" style="font-size:18px;font-weight:600;color:var(--dark);margin-bottom:26px;">环境监测 · 登录</div>
+        <input class="input" value="admin" placeholder="账号">
+        <input class="input" type="password" value="123456" placeholder="密码">
+        <button class="btn" onclick="go('devices')">登 录</button>
+        <div class="center muted" style="margin-top:14px;">忘记密码？</div>
+      </div>
+    </div>
+
+    <!-- 2. 设备列表 -->
+    <div class="screen" data-screen="devices">
+      <div class="appbar">设备列表<span class="right" onclick="go('profile')">我的</span></div>
+      <div class="body">
+        <div class="card" onclick="go('realtime')" style="cursor:pointer;">
+          <div class="row"><b>客厅监测仪</b><span style="color:var(--green);font-size:12px;"><span class="dot" style="background:var(--green)"></span>在线</span></div>
+          <div class="muted" style="margin-top:6px;">位置：客厅</div>
+          <div class="muted">更新：2026-06-23 14:32</div>
+        </div>
+        <div class="card" onclick="go('realtime')" style="cursor:pointer;">
+          <div class="row"><b>卧室监测仪</b><span style="color:var(--green);font-size:12px;"><span class="dot" style="background:var(--green)"></span>在线</span></div>
+          <div class="muted" style="margin-top:6px;">位置：主卧</div>
+          <div class="muted">更新：2026-06-23 14:31</div>
+        </div>
+        <div class="card" onclick="go('realtime')" style="cursor:pointer;">
+          <div class="row"><b>厨房监测仪</b><span style="color:var(--green);font-size:12px;"><span class="dot" style="background:var(--green)"></span>在线</span></div>
+          <div class="muted" style="margin-top:6px;">位置：厨房</div>
+          <div class="muted">更新：2026-06-23 14:32</div>
+        </div>
+        <div class="card" style="opacity:.7;">
+          <div class="row"><b>书房监测仪</b><span style="color:var(--gray);font-size:12px;"><span class="dot" style="background:var(--gray)"></span>离线</span></div>
+          <div class="muted" style="margin-top:6px;">位置：书房</div>
+          <div class="muted">更新：2026-06-23 09:10</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 实时数据 -->
+    <div class="screen" data-screen="realtime">
+      <div class="appbar"><span class="back" onclick="go('devices')">‹</span>客厅监测仪</div>
+      <div class="body">
+        <div class="grid2">
+          <div class="metric"><div class="lbl">温度</div><div class="val">24.5℃</div></div>
+          <div class="metric"><div class="lbl">湿度</div><div class="val">55%</div></div>
+          <div class="metric alarm"><div class="lbl">PM2.5 ⚠</div><div class="val">82</div></div>
+          <div class="metric"><div class="lbl">光照强度</div><div class="val">320lux</div></div>
+        </div>
+        <div class="muted center" style="margin:14px 0;">更新时间：2026-06-23 14:32:05</div>
+        <button class="btn" onclick="go('history')">查看历史趋势</button>
+      </div>
+    </div>
+
+    <!-- 4. 历史数据 -->
+    <div class="screen" data-screen="history">
+      <div class="appbar"><span class="back" onclick="go('realtime')">‹</span>历史趋势</div>
+      <div class="body">
+        <div class="row" style="margin-bottom:10px;">
+          <span class="tag" style="background:var(--primary);color:#fff;">今日</span>
+          <span class="tag" style="background:#fff;border:1px solid var(--line);color:var(--gray);">近7天</span>
+        </div>
+        <div class="card">
+          <div class="muted" style="margin-bottom:6px;">温度 / 湿度 / PM2.5 变化曲线</div>
+          <svg viewBox="0 0 300 150" width="100%" height="150">
+            <polyline fill="none" stroke="#F56C6C" stroke-width="2" points="0,110 50,95 100,100 150,80 200,90 250,70 300,78"/>
+            <polyline fill="none" stroke="#409EFF" stroke-width="2" points="0,60 50,65 100,55 150,58 200,50 250,55 300,48"/>
+            <polyline fill="none" stroke="#67C23A" stroke-width="2" points="0,130 50,120 100,125 150,100 200,115 250,90 300,40"/>
+          </svg>
+          <div class="muted center" style="margin-top:4px;">
+            <span style="color:#F56C6C">●温度</span> &nbsp;
+            <span style="color:#409EFF">●湿度</span> &nbsp;
+            <span style="color:#67C23A">●PM2.5</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row"><span class="muted">14:00</span><span>23.8℃ / 54% / 36</span></div>
+          <div class="row" style="margin-top:8px;"><span class="muted">14:15</span><span>24.2℃ / 55% / 40</span></div>
+          <div class="row" style="margin-top:8px;"><span class="muted">14:30</span><span>24.5℃ / 55% / 82 ⚠</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 报警记录 -->
+    <div class="screen" data-screen="alarm">
+      <div class="appbar"><span class="back" onclick="go('profile')">‹</span>报警记录</div>
+      <div class="body" style="padding:0;">
+        <div class="list-item">
+          <div style="color:var(--red);">厨房监测仪 温度过高 31.5℃（上限30℃）</div>
+          <div class="row" style="margin-top:6px;"><span class="muted">2026-06-23 14:30</span><span class="tag" style="background:#fef0f0;color:var(--red);">未处理</span></div>
+        </div>
+        <div class="list-item">
+          <div style="color:var(--red);">客厅监测仪 PM2.5过高 82（上限75）</div>
+          <div class="row" style="margin-top:6px;"><span class="muted">2026-06-23 14:32</span><span class="tag" style="background:#fef0f0;color:var(--red);">未处理</span></div>
+        </div>
+        <div class="list-item">
+          <div style="color:#606266;">主卧监测仪 湿度过高 73%（上限70%）</div>
+          <div class="row" style="margin-top:6px;"><span class="muted">2026-06-22 21:08</span><span class="tag" style="background:#f0f9eb;color:var(--green);">已处理</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. 阈值设置 -->
+    <div class="screen" data-screen="threshold">
+      <div class="appbar"><span class="back" onclick="go('profile')">‹</span>阈值设置</div>
+      <div class="body">
+        <div class="thr-row"><b>温度（℃）</b><div class="ins"><span class="muted">下限</span><input value="10"><span class="muted">上限</span><input value="30"></div></div>
+        <div class="thr-row"><b>湿度（%）</b><div class="ins"><span class="muted">下限</span><input value="30"><span class="muted">上限</span><input value="70"></div></div>
+        <div class="thr-row"><b>光照强度（lux）</b><div class="ins"><span class="muted">下限</span><input value="50"><span class="muted">上限</span><input value="2000"></div></div>
+        <div class="thr-row"><b>PM2.5（μg/m³）</b><div class="ins"><span class="muted">下限</span><input value="0"><span class="muted">上限</span><input value="75"></div></div>
+        <button class="btn" style="margin-top:6px;">保存</button>
+      </div>
+    </div>
+
+    <!-- 7. 个人中心 -->
+    <div class="screen" data-screen="profile">
+      <div class="appbar"><span class="back" onclick="go('devices')">‹</span>个人中心</div>
+      <div class="body" style="padding:0;">
+        <div style="background:var(--primary);padding:24px;text-align:center;color:#fff;">
+          <div class="avatar">👤</div>
+          <div style="font-size:17px;">系统管理员</div>
+        </div>
+        <div class="menu-item" onclick="go('alarm')"><span>报警记录</span><span class="muted">›</span></div>
+        <div class="menu-item" onclick="go('threshold')"><span>阈值设置</span><span class="muted">›</span></div>
+        <div class="menu-item"><span>修改密码</span><span class="muted">›</span></div>
+        <div class="menu-item"><span>关于</span><span class="muted">›</span></div>
+        <div class="menu-item" onclick="go('login')" style="color:var(--red);justify-content:center;">退出登录</div>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  var screens = [
+    ['login','登录'],['devices','设备列表'],['realtime','实时数据'],
+    ['history','历史趋势'],['alarm','报警记录'],['threshold','阈值设置'],['profile','个人中心']
+  ];
+  var nav = document.getElementById('nav');
+  screens.forEach(function(s){
+    var b = document.createElement('button');
+    b.textContent = s[1]; b.dataset.t = s[0];
+    b.onclick = function(){ go(s[0]); };
+    nav.appendChild(b);
+  });
+  function go(name){
+    document.querySelectorAll('.screen').forEach(function(el){ el.classList.toggle('show', el.dataset.screen===name); });
+    document.querySelectorAll('.nav button').forEach(function(b){ b.classList.toggle('active', b.dataset.t===name); });
+    document.querySelector('.phone .screen.show').scrollTop = 0;
+  }
+  go('login');
+</script>
+</body>
+</html>
