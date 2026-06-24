@@ -8,41 +8,27 @@
   :root{ --primary:#409EFF; --dark:#304156; --gray:#909399; --bg:#f0f2f5; --green:#67C23A;
          --red:#F56C6C; --orange:#E6A23C; --line:#ebeef5; }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif; background:#dfe3ea;
-        color:#303133; padding:22px 16px 50px; }
-  h1.title{ text-align:center; font-size:21px; font-weight:700; color:#1c1c1e; }
-  p.sub{ text-align:center; color:#6b7280; font-size:13px; margin:4px 0 18px; }
+  body{ font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif; background:#dfe3ea; color:#303133; padding:22px 16px 50px; }
+  h1.title{ text-align:center; font-size:21px; font-weight:700; color:#1c1c1e; margin-bottom:14px; }
   .nav{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; max-width:860px; margin:0 auto 22px; }
-  .nav button{ border:1px solid var(--primary); background:#fff; color:var(--primary);
-    padding:6px 13px; border-radius:18px; font-size:13px; cursor:pointer; }
+  .nav button{ border:1px solid var(--primary); background:#fff; color:var(--primary); padding:6px 13px; border-radius:18px; font-size:13px; cursor:pointer; }
   .nav button.active,.nav button:hover{ background:var(--primary); color:#fff; }
 
-  /* MacBook Pro 外壳 */
   .macbook{ width:940px; max-width:96vw; margin:0 auto; }
-  .mb-top{ background:#0e0e10; border-radius:22px 22px 4px 4px; padding:14px 14px 0; position:relative;
-    box-shadow:0 22px 50px rgba(0,0,0,.32); }
-  .mb-cam{ position:absolute; top:7px; left:50%; transform:translateX(-50%); width:7px; height:7px;
-    border-radius:50%; background:#26262b; box-shadow:0 0 0 2px #161619; }
-  .mb-screen{ background:#fff; border-radius:5px; overflow:hidden; height:600px; display:flex; flex-direction:column; }
+  .mb-top{ background:#0e0e10; border-radius:22px 22px 4px 4px; padding:14px 14px 0; position:relative; box-shadow:0 22px 50px rgba(0,0,0,.32); }
+  .mb-cam{ position:absolute; top:7px; left:50%; transform:translateX(-50%); width:7px; height:7px; border-radius:50%; background:#26262b; box-shadow:0 0 0 2px #161619; }
+  .mb-screen{ background:#fff; border-radius:5px; overflow:hidden; height:600px; display:flex; flex-direction:column; position:relative; }
   .mb-base{ height:20px; background:linear-gradient(#d6dade,#a7adb6); border-radius:0 0 12px 12px; position:relative; }
-  .mb-base::after{ content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
-    width:150px; height:9px; background:#9298a1; border-radius:0 0 10px 10px; }
+  .mb-base::after{ content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:150px; height:9px; background:#9298a1; border-radius:0 0 10px 10px; }
   .mb-shadow{ width:80%; height:14px; margin:6px auto 0; background:radial-gradient(ellipse,#0003,transparent 70%); }
 
-  /* 浏览器壳 */
   .browser{ height:38px; flex:0 0 auto; background:#e8eaed; display:flex; align-items:center; gap:10px; padding:0 14px; }
-  .lights{ display:flex; gap:7px; }
-  .lights i{ width:12px; height:12px; border-radius:50%; }
-  .url{ flex:1; max-width:520px; background:#fff; border-radius:7px; height:24px; display:flex; align-items:center;
-    padding:0 12px; font-size:12px; color:#5f6368; }
-  .app{ flex:1 1 auto; overflow:hidden; }
+  .lights{ display:flex; gap:7px; } .lights i{ width:12px; height:12px; border-radius:50%; }
+  .url{ flex:1; max-width:520px; background:#fff; border-radius:7px; height:24px; display:flex; align-items:center; padding:0 12px; font-size:12px; color:#5f6368; }
+  .app{ flex:1 1 auto; overflow:hidden; position:relative; }
 
-  .vscreen{ display:none; height:100%; }
-  .vscreen.show{ display:flex; }
-
-  /* 登录 */
-  .login-wrap{ width:100%; height:100%; display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(135deg,#1f2d3d,#409EFF); }
+  .vscreen{ display:none; height:100%; } .vscreen.show{ display:flex; }
+  .login-wrap{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#1f2d3d,#409EFF); }
   .login-card{ width:340px; background:#fff; border-radius:10px; padding:28px 26px; box-shadow:0 10px 30px #0003; }
   .login-card h2{ text-align:center; font-size:19px; margin-bottom:22px; }
   .ipt{ width:100%; height:40px; border:1px solid var(--line); border-radius:6px; padding:0 12px; margin-bottom:14px; font-size:14px; }
@@ -50,25 +36,25 @@
   .btn-block{ width:100%; height:42px; font-size:15px; }
   .tip{ text-align:center; color:var(--gray); font-size:12px; margin-top:12px; }
 
-  /* 后台 shell */
   .shell{ height:100%; }
   .side{ width:190px; background:var(--dark); color:#bfcbd9; flex:0 0 auto; }
   .side .logo{ height:50px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:15px; border-bottom:1px solid #ffffff14; }
   .side .item{ height:46px; display:flex; align-items:center; padding:0 22px; font-size:14px; cursor:pointer; gap:9px; }
-  .side .item:hover{ background:#263445; }
-  .side .item.on{ background:var(--primary); color:#fff; }
-  .main{ flex:1 1 auto; display:flex; flex-direction:column; background:var(--bg); overflow:hidden; }
-  .topbar{ height:50px; background:#fff; border-bottom:1px solid var(--line); display:flex; align-items:center;
-    justify-content:space-between; padding:0 20px; flex:0 0 auto; }
+  .side .item:hover{ background:#263445; } .side .item.on{ background:var(--primary); color:#fff; }
+  .main{ flex:1 1 auto; display:flex; flex-direction:column; background:var(--bg); overflow:hidden; position:relative; }
+  .topbar{ height:50px; background:#fff; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; padding:0 20px; flex:0 0 auto; position:relative; z-index:5; }
   .topbar .t{ font-size:16px; font-weight:600; }
-  .topbar .u{ color:var(--primary); font-size:14px; }
+  .topbar .u{ color:var(--primary); font-size:14px; cursor:pointer; user-select:none; }
+  .dropdown{ position:absolute; top:46px; right:16px; background:#fff; border:1px solid var(--line); border-radius:8px; box-shadow:0 4px 16px #0002; display:none; overflow:hidden; z-index:20; }
+  .dropdown.show{ display:block; }
+  .dropdown div{ padding:10px 22px; font-size:13px; cursor:pointer; white-space:nowrap; }
+  .dropdown div:hover{ background:#f5f7fa; }
   .pagewrap{ flex:1 1 auto; overflow-y:auto; padding:18px; }
   .page{ display:none; } .page.on{ display:block; }
 
   .cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:18px; }
   .stat{ background:#fff; border-radius:8px; padding:18px; text-align:center; box-shadow:0 1px 4px #0000000d; }
-  .stat .n{ font-size:28px; font-weight:700; }
-  .stat .n.g{ color:var(--green);} .stat .n.r{ color:var(--red);}
+  .stat .n{ font-size:28px; font-weight:700; } .stat .n.g{ color:var(--green);} .stat .n.r{ color:var(--red);}
   .stat .l{ color:var(--gray); font-size:13px; margin-top:4px; }
   .row2{ display:grid; grid-template-columns:1.5fr 1fr; gap:16px; }
   .panel{ background:#fff; border-radius:8px; padding:16px; box-shadow:0 1px 4px #0000000d; }
@@ -76,20 +62,34 @@
 
   .toolbar{ display:flex; gap:10px; margin-bottom:14px; align-items:center; }
   .toolbar input,.toolbar select{ height:32px; border:1px solid var(--line); border-radius:5px; padding:0 10px; font-size:13px; }
-  .btn-sm{ height:32px; padding:0 14px; font-size:13px; }
-  .btn-green{ background:var(--green); }
+  .btn-sm{ height:32px; padding:0 14px; font-size:13px; } .btn-green{ background:var(--green); }
   table.t{ width:100%; border-collapse:collapse; background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 1px 4px #0000000d; }
   table.t th{ background:#fafafa; text-align:left; padding:11px 14px; font-size:13px; color:#606266; border-bottom:1px solid var(--line); }
   table.t td{ padding:11px 14px; font-size:13px; border-bottom:1px solid var(--line); }
   table.t tr:last-child td{ border-bottom:none; }
   .tag{ font-size:12px; padding:2px 8px; border-radius:4px; }
-  .tag.on{ background:#f0f9eb; color:var(--green);} .tag.off{ background:#f4f4f5; color:var(--gray);}
-  .tag.danger{ background:#fef0f0; color:var(--red);}
-  .op{ color:var(--primary); cursor:pointer; margin-right:10px; font-size:13px; }
-  .op.del{ color:var(--red); }
+  .tag.on{ background:#f0f9eb; color:var(--green);} .tag.off{ background:#f4f4f5; color:var(--gray);} .tag.danger{ background:#fef0f0; color:var(--red);}
+  .op{ color:var(--primary); cursor:pointer; margin-right:10px; font-size:13px; } .op.del{ color:var(--red); }
   .miniipt{ width:70px; height:28px; border:1px solid var(--line); border-radius:4px; padding:0 6px; }
-  .switch{ width:42px; height:22px; border-radius:12px; background:var(--green); position:relative; display:inline-block; vertical-align:middle; }
-  .switch::after{ content:""; position:absolute; top:2px; left:22px; width:18px; height:18px; border-radius:50%; background:#fff; }
+  .switch{ width:42px; height:22px; border-radius:12px; background:var(--green); position:relative; display:inline-block; vertical-align:middle; cursor:pointer; transition:background .15s; }
+  .switch::after{ content:""; position:absolute; top:2px; left:22px; width:18px; height:18px; border-radius:50%; background:#fff; transition:left .15s; }
+  .switch.off{ background:#dcdfe6; } .switch.off::after{ left:2px; }
+  .empty{ text-align:center; color:var(--gray); padding:26px; font-size:13px; }
+
+  /* 弹窗 */
+  .mask{ position:absolute; inset:0; background:#0006; display:none; align-items:center; justify-content:center; z-index:30; }
+  .mask.show{ display:flex; }
+  .modal{ width:360px; background:#fff; border-radius:10px; overflow:hidden; }
+  .modal .mh{ padding:14px 18px; font-size:15px; font-weight:600; border-bottom:1px solid var(--line); }
+  .modal .mb{ padding:16px 18px; }
+  .modal .frow{ margin-bottom:12px; } .modal .frow label{ display:block; font-size:13px; color:#606266; margin-bottom:5px; }
+  .modal .frow input,.modal .frow select{ width:100%; height:36px; border:1px solid var(--line); border-radius:5px; padding:0 10px; font-size:13px; }
+  .modal .mf{ padding:12px 18px; text-align:right; border-top:1px solid var(--line); }
+  .modal .mf button{ height:34px; padding:0 16px; font-size:13px; border-radius:5px; cursor:pointer; }
+  .btn-plain{ background:#fff; border:1px solid var(--line); color:#606266; margin-right:8px; }
+  /* toast */
+  .toast{ position:absolute; top:14px; left:50%; transform:translateX(-50%); background:#36c06a; color:#fff; padding:9px 18px; border-radius:6px; font-size:13px; z-index:50; opacity:0; transition:opacity .2s; pointer-events:none; }
+  .toast.show{ opacity:1; } .toast.err{ background:#F56C6C; }
 </style>
 </head>
 <body>
@@ -105,15 +105,16 @@
           <span class="url">🔒 localhost:9000/dashboard</span>
         </div>
         <div class="app">
+          <div class="toast" id="toast"></div>
 
           <!-- 登录 -->
           <div class="vscreen show" data-v="login">
             <div class="login-wrap">
               <div class="login-card">
                 <h2>智能家居环境监测系统</h2>
-                <input class="ipt" value="rxp">
-                <input class="ipt" type="password" value="123456">
-                <button class="btn btn-block" onclick="go('dashboard')">登 录</button>
+                <input class="ipt" id="lu" value="rxp">
+                <input class="ipt" id="lp" type="password" value="123456">
+                <button class="btn btn-block" onclick="doLogin()">登 录</button>
                 <div class="tip">默认账号 rxp / 密码 123456</div>
               </div>
             </div>
@@ -131,112 +132,80 @@
               <div class="item" data-m="user" onclick="go('user')">👤 用户管理</div>
             </div>
             <div class="main">
-              <div class="topbar"><span class="t" id="ttl">仪表盘</span><span class="u">rxp ▾</span></div>
+              <div class="topbar"><span class="t" id="ttl">仪表盘</span><span class="u" id="userBtn" onclick="toggleDrop(event)">rxp ▾</span></div>
+              <div class="dropdown" id="drop">
+                <div onclick="toast('当前用户：rxp（系统管理员）')">个人信息</div>
+                <div onclick="logout()">退出登录</div>
+              </div>
               <div class="pagewrap">
-
-                <!-- 仪表盘 -->
                 <div class="page" data-p="dashboard">
-                  <div class="cards">
-                    <div class="stat"><div class="n">4</div><div class="l">设备总数</div></div>
-                    <div class="stat"><div class="n g">3</div><div class="l">在线设备</div></div>
-                    <div class="stat"><div class="n r">2</div><div class="l">未处理报警</div></div>
-                    <div class="stat"><div class="n">128</div><div class="l">今日数据条数</div></div>
-                  </div>
+                  <div class="cards" id="statCards"></div>
                   <div class="row2">
                     <div class="panel"><h3>实时趋势（客厅监测仪）</h3>
                       <svg viewBox="0 0 460 200" width="100%" height="200">
-                        <line x1="30" y1="170" x2="450" y2="170" stroke="#ebeef5"/>
-                        <line x1="30" y1="110" x2="450" y2="110" stroke="#f5f5f5"/>
-                        <line x1="30" y1="50" x2="450" y2="50" stroke="#f5f5f5"/>
+                        <line x1="30" y1="170" x2="450" y2="170" stroke="#ebeef5"/><line x1="30" y1="110" x2="450" y2="110" stroke="#f5f5f5"/><line x1="30" y1="50" x2="450" y2="50" stroke="#f5f5f5"/>
                         <polyline fill="none" stroke="#F56C6C" stroke-width="2" points="30,150 100,130 170,138 240,110 310,122 380,96 450,104"/>
                         <polyline fill="none" stroke="#409EFF" stroke-width="2" points="30,90 100,96 170,84 240,88 310,78 380,84 450,72"/>
                         <polyline fill="none" stroke="#67C23A" stroke-width="2" points="30,165 100,150 170,158 240,128 310,144 380,112 450,60"/>
                       </svg>
-                      <div style="text-align:center;font-size:12px;margin-top:6px;">
-                        <span style="color:#F56C6C">●温度</span> <span style="color:#409EFF">●湿度</span> <span style="color:#67C23A">●PM2.5</span>
-                      </div>
+                      <div style="text-align:center;font-size:12px;margin-top:6px;"><span style="color:#F56C6C">●温度</span> <span style="color:#409EFF">●湿度</span> <span style="color:#67C23A">●PM2.5</span></div>
                     </div>
                     <div class="panel"><h3>设备在线状态</h3>
                       <svg viewBox="0 0 200 200" width="100%" height="200">
                         <circle cx="100" cy="100" r="62" fill="none" stroke="#67C23A" stroke-width="26" stroke-dasharray="292 97" transform="rotate(-90 100 100)"/>
                         <circle cx="100" cy="100" r="62" fill="none" stroke="#909399" stroke-width="26" stroke-dasharray="97 292" stroke-dashoffset="-292" transform="rotate(-90 100 100)"/>
-                        <text x="100" y="98" text-anchor="middle" font-size="22" font-weight="700">75%</text>
+                        <text id="pieTxt" x="100" y="98" text-anchor="middle" font-size="22" font-weight="700">75%</text>
                         <text x="100" y="118" text-anchor="middle" font-size="12" fill="#909399">在线率</text>
                       </svg>
-                      <div style="text-align:center;font-size:12px;"><span style="color:#67C23A">●在线 3</span> &nbsp; <span style="color:#909399">●离线 1</span></div>
+                      <div style="text-align:center;font-size:12px;" id="pieLegend"></div>
                     </div>
                   </div>
                 </div>
 
-                <!-- 设备管理 -->
                 <div class="page" data-p="device">
                   <div class="toolbar">
-                    <input placeholder="按设备名搜索"><button class="btn btn-sm">搜索</button>
-                    <button class="btn btn-sm btn-green">+ 新增设备</button>
+                    <input id="devKw" placeholder="按设备名搜索" onkeyup="if(event.key==='Enter')renderDevices()">
+                    <button class="btn btn-sm" onclick="renderDevices()">搜索</button>
+                    <button class="btn btn-sm btn-green" onclick="deviceForm(-1)">+ 新增设备</button>
                   </div>
-                  <table class="t">
-                    <tr><th>设备编号</th><th>设备名称</th><th>位置</th><th>状态</th><th>最近活跃</th><th>操作</th></tr>
-                    <tr><td>DEV-001</td><td>客厅监测仪</td><td>客厅</td><td><span class="tag on">在线</span></td><td>14:32</td><td><span class="op">编辑</span><span class="op del">删除</span></td></tr>
-                    <tr><td>DEV-002</td><td>卧室监测仪</td><td>主卧</td><td><span class="tag on">在线</span></td><td>14:31</td><td><span class="op">编辑</span><span class="op del">删除</span></td></tr>
-                    <tr><td>DEV-003</td><td>厨房监测仪</td><td>厨房</td><td><span class="tag on">在线</span></td><td>14:32</td><td><span class="op">编辑</span><span class="op del">删除</span></td></tr>
-                    <tr><td>DEV-004</td><td>书房监测仪</td><td>书房</td><td><span class="tag off">离线</span></td><td>09:10</td><td><span class="op">编辑</span><span class="op del">删除</span></td></tr>
-                  </table>
+                  <table class="t" id="devTable"></table>
                 </div>
 
-                <!-- 监测数据 -->
                 <div class="page" data-p="data">
                   <div class="toolbar">
-                    <select><option>全部设备</option><option>客厅监测仪</option></select>
-                    <input type="text" placeholder="开始时间"><input type="text" placeholder="结束时间">
-                    <button class="btn btn-sm">查询</button>
+                    <select id="dataDev" onchange="renderData()"><option value="">全部设备</option></select>
+                    <button class="btn btn-sm" onclick="renderData()">查询</button>
                   </div>
-                  <table class="t">
-                    <tr><th>设备</th><th>温度(℃)</th><th>湿度(%)</th><th>光照(lux)</th><th>PM2.5</th><th>采集时间</th></tr>
-                    <tr><td>客厅监测仪</td><td>24.5</td><td>55</td><td>320</td><td style="color:#F56C6C">82 ⚠</td><td>2026-06-23 14:32</td></tr>
-                    <tr><td>客厅监测仪</td><td>24.2</td><td>55</td><td>410</td><td>40</td><td>2026-06-23 14:17</td></tr>
-                    <tr><td>卧室监测仪</td><td>23.8</td><td>52</td><td>180</td><td>28</td><td>2026-06-23 14:30</td></tr>
-                    <tr><td>厨房监测仪</td><td>31.5</td><td>60</td><td>500</td><td>45</td><td>2026-06-23 14:30</td></tr>
-                  </table>
+                  <table class="t" id="dataTable"></table>
                 </div>
 
-                <!-- 报警记录 -->
                 <div class="page" data-p="alarm">
                   <div class="toolbar">
-                    <select><option>全部状态</option><option>未处理</option><option>已处理</option></select>
-                    <button class="btn btn-sm">刷新</button>
+                    <select id="alarmFilter" onchange="renderAlarms()"><option value="">全部状态</option><option value="0">未处理</option><option value="1">已处理</option></select>
+                    <button class="btn btn-sm" onclick="renderAlarms()">刷新</button>
                   </div>
-                  <table class="t">
-                    <tr><th>报警时间</th><th>设备</th><th>报警内容</th><th>状态</th><th>操作</th></tr>
-                    <tr><td>14:30</td><td>厨房监测仪</td><td style="color:#F56C6C">温度过高 31.5℃（上限30℃）</td><td><span class="tag danger">未处理</span></td><td><span class="op">标记处理</span><span class="op del">删除</span></td></tr>
-                    <tr><td>14:32</td><td>客厅监测仪</td><td style="color:#F56C6C">PM2.5过高 82（上限75）</td><td><span class="tag danger">未处理</span></td><td><span class="op">标记处理</span><span class="op del">删除</span></td></tr>
-                    <tr><td>昨 21:08</td><td>卧室监测仪</td><td>湿度过高 73%（上限70%）</td><td><span class="tag on">已处理</span></td><td><span class="op del">删除</span></td></tr>
-                  </table>
+                  <table class="t" id="alarmTable"></table>
                 </div>
 
-                <!-- 阈值设置 -->
-                <div class="page" data-p="threshold">
-                  <table class="t">
-                    <tr><th>监测指标</th><th>单位</th><th>下限</th><th>上限</th><th>启用</th><th>操作</th></tr>
-                    <tr><td>温度</td><td>℃</td><td><input class="miniipt" value="10"></td><td><input class="miniipt" value="30"></td><td><span class="switch"></span></td><td><span class="op">保存</span></td></tr>
-                    <tr><td>湿度</td><td>%</td><td><input class="miniipt" value="30"></td><td><input class="miniipt" value="70"></td><td><span class="switch"></span></td><td><span class="op">保存</span></td></tr>
-                    <tr><td>光照强度</td><td>lux</td><td><input class="miniipt" value="50"></td><td><input class="miniipt" value="2000"></td><td><span class="switch"></span></td><td><span class="op">保存</span></td></tr>
-                    <tr><td>PM2.5</td><td>μg/m³</td><td><input class="miniipt" value="0"></td><td><input class="miniipt" value="75"></td><td><span class="switch"></span></td><td><span class="op">保存</span></td></tr>
-                  </table>
-                </div>
+                <div class="page" data-p="threshold"><table class="t" id="thrTable"></table></div>
 
-                <!-- 用户管理 -->
                 <div class="page" data-p="user">
                   <div class="toolbar">
-                    <input placeholder="搜索账号/昵称"><button class="btn btn-sm">搜索</button>
-                    <button class="btn btn-sm btn-green">+ 新增用户</button>
+                    <input id="userKw" placeholder="搜索账号/昵称" onkeyup="if(event.key==='Enter')renderUsers()">
+                    <button class="btn btn-sm" onclick="renderUsers()">搜索</button>
+                    <button class="btn btn-sm btn-green" onclick="userForm(-1)">+ 新增用户</button>
                   </div>
-                  <table class="t">
-                    <tr><th>账号</th><th>昵称</th><th>手机号</th><th>角色</th><th>状态</th><th>操作</th></tr>
-                    <tr><td>rxp</td><td>系统管理员</td><td>138****0000</td><td>管理员</td><td><span class="tag on">正常</span></td><td><span class="op">编辑</span><span class="op del">删除</span></td></tr>
-                    <tr><td>user</td><td>普通用户</td><td>138****0001</td><td>普通用户</td><td><span class="tag on">正常</span></td><td><span class="op">编辑</span><span class="op del">删除</span></td></tr>
-                  </table>
+                  <table class="t" id="userTable"></table>
                 </div>
+              </div>
 
+              <!-- 弹窗 -->
+              <div class="mask" id="mask">
+                <div class="modal">
+                  <div class="mh" id="modalTitle">编辑</div>
+                  <div class="mb" id="modalBody"></div>
+                  <div class="mf"><button class="btn-plain" onclick="closeModal()">取消</button><button class="btn btn-sm" id="modalSave">保存</button></div>
+                </div>
               </div>
             </div>
           </div>
@@ -249,13 +218,159 @@
   </div>
 
 <script>
-  var titles={dashboard:'仪表盘',device:'设备管理',data:'监测数据查询',alarm:'报警记录',threshold:'阈值设置',user:'用户管理'};
-  var pages=[['login','登录'],['dashboard','仪表盘'],['device','设备管理'],['data','监测数据'],
-    ['alarm','报警记录'],['threshold','阈值设置'],['user','用户管理']];
-  var nav=document.getElementById('nav');
-  pages.forEach(function(p){ var b=document.createElement('button'); b.textContent=p[1]; b.dataset.t=p[0];
-    b.onclick=function(){ go(p[0]); }; nav.appendChild(b); });
+  // ===== 数据 =====
+  let devices=[{code:'DEV-001',name:'客厅监测仪',loc:'客厅',online:true,time:'14:32'},
+    {code:'DEV-002',name:'卧室监测仪',loc:'主卧',online:true,time:'14:31'},
+    {code:'DEV-003',name:'厨房监测仪',loc:'厨房',online:true,time:'14:32'},
+    {code:'DEV-004',name:'书房监测仪',loc:'书房',online:false,time:'09:10'}];
+  let users=[{u:'rxp',nick:'系统管理员',phone:'17200582880',role:0,active:true},
+    {u:'user',nick:'普通用户',phone:'13800000001',role:1,active:true}];
+  let alarms=[{time:'2026-06-23 14:30',dev:'厨房监测仪',content:'温度过高 31.5℃（上限30℃）',status:0},
+    {time:'2026-06-23 14:32',dev:'客厅监测仪',content:'PM2.5过高 82（上限75）',status:0},
+    {time:'2026-06-22 21:08',dev:'卧室监测仪',content:'湿度过高 73%（上限70%）',status:1}];
+  let thresholds=[{name:'温度',unit:'℃',low:10,up:30,on:true},{name:'湿度',unit:'%',low:30,up:70,on:true},
+    {name:'光照强度',unit:'lux',low:50,up:2000,on:true},{name:'PM2.5',unit:'μg/m³',low:0,up:75,on:true}];
+  let monitor=[{dev:'客厅监测仪',t:24.5,h:55,l:320,p:82,time:'2026-06-23 14:32'},
+    {dev:'客厅监测仪',t:24.2,h:55,l:410,p:40,time:'2026-06-23 14:17'},
+    {dev:'卧室监测仪',t:23.8,h:52,l:180,p:28,time:'2026-06-23 14:30'},
+    {dev:'厨房监测仪',t:31.5,h:60,l:500,p:45,time:'2026-06-23 14:30'}];
 
+  // ===== 工具 =====
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  var toastTimer;
+  function toast(msg,err){ var t=document.getElementById('toast'); t.textContent=msg; t.className='toast show'+(err?' err':''); clearTimeout(toastTimer); toastTimer=setTimeout(function(){t.className='toast';},1600); closeDrop(); }
+  function toggleDrop(e){ e.stopPropagation(); document.getElementById('drop').classList.toggle('show'); }
+  function closeDrop(){ document.getElementById('drop').classList.remove('show'); }
+  document.addEventListener('click',closeDrop);
+  function logout(){ closeDrop(); go('login'); }
+  function doLogin(){ var u=document.getElementById('lu').value.trim(), p=document.getElementById('lp').value.trim();
+    if(!u||!p){ toast('请输入账号和密码',true); return; } go('dashboard'); }
+
+  // ===== 弹窗 =====
+  function openModal(title, fieldsHtml, onSave){
+    document.getElementById('modalTitle').textContent=title;
+    document.getElementById('modalBody').innerHTML=fieldsHtml;
+    document.getElementById('mask').classList.add('show');
+    var btn=document.getElementById('modalSave'); var nb=btn.cloneNode(true); btn.parentNode.replaceChild(nb,btn);
+    nb.addEventListener('click', onSave);
+  }
+  function closeModal(){ document.getElementById('mask').classList.remove('show'); }
+  function fv(id){ var e=document.getElementById(id); return e?e.value.trim():''; }
+
+  // ===== 设备 =====
+  function renderDevices(){
+    var kw=(document.getElementById('devKw').value||'').trim();
+    var rows=devices.map(function(d,i){ return {d:d,i:i}; }).filter(function(x){ return !kw||x.d.name.indexOf(kw)>=0; });
+    var html='<tr><th>设备编号</th><th>设备名称</th><th>位置</th><th>状态</th><th>最近活跃</th><th>操作</th></tr>';
+    if(!rows.length){ html+='<tr><td colspan="6"><div class="empty">暂无数据</div></td></tr>'; }
+    rows.forEach(function(x){ var d=x.d;
+      html+='<tr><td>'+esc(d.code)+'</td><td>'+esc(d.name)+'</td><td>'+esc(d.loc)+'</td><td><span class="tag '+(d.online?'on':'off')+'">'+(d.online?'在线':'离线')+'</span></td><td>'+esc(d.time)+'</td>'+
+        '<td><span class="op" onclick="deviceForm('+x.i+')">编辑</span><span class="op del" onclick="delDevice('+x.i+')">删除</span></td></tr>';
+    });
+    document.getElementById('devTable').innerHTML=html;
+  }
+  function deviceForm(i){
+    var d=i<0?{code:'',name:'',loc:'',online:true}:devices[i];
+    openModal(i<0?'新增设备':'编辑设备',
+      '<div class="frow"><label>设备编号</label><input id="f_code" value="'+esc(d.code)+'"></div>'+
+      '<div class="frow"><label>设备名称</label><input id="f_name" value="'+esc(d.name)+'"></div>'+
+      '<div class="frow"><label>安装位置</label><input id="f_loc" value="'+esc(d.loc)+'"></div>'+
+      '<div class="frow"><label>状态</label><select id="f_on"><option value="1"'+(d.online?' selected':'')+'>在线</option><option value="0"'+(!d.online?' selected':'')+'>离线</option></select></div>',
+      function(){ if(!fv('f_name')){ toast('请填写设备名称',true); return; }
+        var obj={code:fv('f_code')||('DEV-'+(devices.length+1)),name:fv('f_name'),loc:fv('f_loc'),online:fv('f_on')==='1',time:'刚刚'};
+        if(i<0) devices.push(obj); else devices[i]=obj;
+        closeModal(); renderDevices(); renderStat(); toast(i<0?'新增成功':'保存成功'); });
+  }
+  function delDevice(i){ if(confirm('确认删除设备「'+devices[i].name+'」？')){ devices.splice(i,1); renderDevices(); renderStat(); toast('已删除'); } }
+
+  // ===== 监测数据 =====
+  function fillDataDevices(){ var s=document.getElementById('dataDev'); s.innerHTML='<option value="">全部设备</option>'+devices.map(function(d){return '<option>'+esc(d.name)+'</option>';}).join(''); }
+  function renderData(){
+    var dev=document.getElementById('dataDev').value;
+    var html='<tr><th>设备</th><th>温度(℃)</th><th>湿度(%)</th><th>光照(lux)</th><th>PM2.5</th><th>采集时间</th></tr>';
+    var rows=monitor.filter(function(m){ return !dev||m.dev===dev; });
+    if(!rows.length){ html+='<tr><td colspan="6"><div class="empty">暂无数据</div></td></tr>'; }
+    rows.forEach(function(m){ html+='<tr><td>'+esc(m.dev)+'</td><td>'+m.t+'</td><td>'+m.h+'</td><td>'+m.l+'</td><td'+(m.p>75?' style="color:#F56C6C"':'')+'>'+m.p+(m.p>75?' ⚠':'')+'</td><td>'+esc(m.time)+'</td></tr>'; });
+    document.getElementById('dataTable').innerHTML=html;
+  }
+
+  // ===== 报警 =====
+  function renderAlarms(){
+    var f=document.getElementById('alarmFilter').value;
+    var html='<tr><th>报警时间</th><th>设备</th><th>报警内容</th><th>状态</th><th>操作</th></tr>';
+    var rows=alarms.map(function(a,i){return {a:a,i:i};}).filter(function(x){ return f===''||String(x.a.status)===f; });
+    if(!rows.length){ html+='<tr><td colspan="5"><div class="empty">暂无数据</div></td></tr>'; }
+    rows.forEach(function(x){ var a=x.a;
+      html+='<tr><td>'+esc(a.time)+'</td><td>'+esc(a.dev)+'</td><td'+(a.status===0?' style="color:#F56C6C"':'')+'>'+esc(a.content)+'</td>'+
+        '<td><span class="tag '+(a.status===0?'danger':'on')+'">'+(a.status===0?'未处理':'已处理')+'</span></td>'+
+        '<td>'+(a.status===0?'<span class="op" onclick="handleAlarm('+x.i+')">标记处理</span>':'')+'<span class="op del" onclick="delAlarm('+x.i+')">删除</span></td></tr>';
+    });
+    document.getElementById('alarmTable').innerHTML=html;
+  }
+  function handleAlarm(i){ alarms[i].status=1; renderAlarms(); renderStat(); toast('已标记为处理'); }
+  function delAlarm(i){ if(confirm('确认删除该报警记录？')){ alarms.splice(i,1); renderAlarms(); renderStat(); toast('已删除'); } }
+
+  // ===== 阈值 =====
+  function renderThresholds(){
+    var html='<tr><th>监测指标</th><th>单位</th><th>下限</th><th>上限</th><th>启用</th><th>操作</th></tr>';
+    thresholds.forEach(function(t,i){
+      html+='<tr><td>'+esc(t.name)+'</td><td>'+esc(t.unit)+'</td>'+
+        '<td><input class="miniipt" id="thr_low_'+i+'" value="'+t.low+'"></td>'+
+        '<td><input class="miniipt" id="thr_up_'+i+'" value="'+t.up+'"></td>'+
+        '<td><span class="switch'+(t.on?'':' off')+'" onclick="toggleThr('+i+',this)"></span></td>'+
+        '<td><span class="op" onclick="saveThr('+i+')">保存</span></td></tr>';
+    });
+    document.getElementById('thrTable').innerHTML=html;
+  }
+  function toggleThr(i,el){ thresholds[i].on=!thresholds[i].on; el.classList.toggle('off',!thresholds[i].on); }
+  function saveThr(i){ thresholds[i].low=document.getElementById('thr_low_'+i).value; thresholds[i].up=document.getElementById('thr_up_'+i).value; toast(thresholds[i].name+' 阈值已保存'); }
+
+  // ===== 用户 =====
+  function renderUsers(){
+    var kw=(document.getElementById('userKw').value||'').trim();
+    var html='<tr><th>账号</th><th>昵称</th><th>手机号</th><th>角色</th><th>状态</th><th>操作</th></tr>';
+    var rows=users.map(function(u,i){return {u:u,i:i};}).filter(function(x){ return !kw||x.u.u.indexOf(kw)>=0||x.u.nick.indexOf(kw)>=0; });
+    if(!rows.length){ html+='<tr><td colspan="6"><div class="empty">暂无数据</div></td></tr>'; }
+    rows.forEach(function(x){ var u=x.u;
+      html+='<tr><td>'+esc(u.u)+'</td><td>'+esc(u.nick)+'</td><td>'+esc(u.phone)+'</td><td>'+(u.role===0?'管理员':'普通用户')+'</td>'+
+        '<td><span class="tag '+(u.active?'on':'off')+'">'+(u.active?'正常':'禁用')+'</span></td>'+
+        '<td><span class="op" onclick="userForm('+x.i+')">编辑</span><span class="op del" onclick="delUser('+x.i+')">删除</span></td></tr>';
+    });
+    document.getElementById('userTable').innerHTML=html;
+  }
+  function userForm(i){
+    var u=i<0?{u:'',nick:'',phone:'',role:1,active:true}:users[i];
+    openModal(i<0?'新增用户':'编辑用户',
+      '<div class="frow"><label>账号</label><input id="f_u" value="'+esc(u.u)+'"'+(i<0?'':' disabled')+'></div>'+
+      '<div class="frow"><label>昵称</label><input id="f_nick" value="'+esc(u.nick)+'"></div>'+
+      '<div class="frow"><label>手机号</label><input id="f_phone" value="'+esc(u.phone)+'"></div>'+
+      '<div class="frow"><label>角色</label><select id="f_role"><option value="0"'+(u.role===0?' selected':'')+'>管理员</option><option value="1"'+(u.role===1?' selected':'')+'>普通用户</option></select></div>',
+      function(){ if(!fv('f_u')){ toast('请填写账号',true); return; }
+        var obj={u:fv('f_u'),nick:fv('f_nick'),phone:fv('f_phone'),role:parseInt(fv('f_role')),active:true};
+        if(i<0) users.push(obj); else users[i]=obj;
+        closeModal(); renderUsers(); toast(i<0?'新增成功':'保存成功'); });
+  }
+  function delUser(i){ if(confirm('确认删除用户「'+users[i].u+'」？')){ users.splice(i,1); renderUsers(); toast('已删除'); } }
+
+  // ===== 仪表盘 =====
+  function renderStat(){
+    var online=devices.filter(function(d){return d.online;}).length;
+    var unh=alarms.filter(function(a){return a.status===0;}).length;
+    document.getElementById('statCards').innerHTML=
+      '<div class="stat"><div class="n">'+devices.length+'</div><div class="l">设备总数</div></div>'+
+      '<div class="stat"><div class="n g">'+online+'</div><div class="l">在线设备</div></div>'+
+      '<div class="stat"><div class="n r">'+unh+'</div><div class="l">未处理报警</div></div>'+
+      '<div class="stat"><div class="n">128</div><div class="l">今日数据条数</div></div>';
+    var rate=devices.length?Math.round(online/devices.length*100):0;
+    document.getElementById('pieTxt').textContent=rate+'%';
+    document.getElementById('pieLegend').innerHTML='<span style="color:#67C23A">●在线 '+online+'</span> &nbsp; <span style="color:#909399">●离线 '+(devices.length-online)+'</span>';
+  }
+
+  // ===== 路由 =====
+  var titles={dashboard:'仪表盘',device:'设备管理',data:'监测数据查询',alarm:'报警记录',threshold:'阈值设置',user:'用户管理'};
+  var pages=[['login','登录'],['dashboard','仪表盘'],['device','设备管理'],['data','监测数据'],['alarm','报警记录'],['threshold','阈值设置'],['user','用户管理']];
+  var nav=document.getElementById('nav');
+  pages.forEach(function(p){ var b=document.createElement('button'); b.textContent=p[1]; b.dataset.t=p[0]; b.onclick=function(){ go(p[0]); }; nav.appendChild(b); });
   function go(name){
     var login=name==='login';
     document.querySelector('[data-v="login"]').classList.toggle('show', login);
@@ -264,6 +379,12 @@
       document.querySelectorAll('.page').forEach(function(el){ el.classList.toggle('on', el.dataset.p===name); });
       document.querySelectorAll('.side .item').forEach(function(el){ el.classList.toggle('on', el.dataset.m===name); });
       document.getElementById('ttl').textContent=titles[name]||'';
+      if(name==='dashboard') renderStat();
+      if(name==='device') renderDevices();
+      if(name==='data'){ fillDataDevices(); renderData(); }
+      if(name==='alarm') renderAlarms();
+      if(name==='threshold') renderThresholds();
+      if(name==='user') renderUsers();
       var pw=document.querySelector('.pagewrap'); if(pw) pw.scrollTop=0;
     }
     document.querySelectorAll('.nav button').forEach(function(b){ b.classList.toggle('active', b.dataset.t===name); });
