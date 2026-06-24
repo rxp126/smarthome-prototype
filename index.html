@@ -309,6 +309,14 @@
     var c=document.querySelector('.screen.show .content'); if(c) c.scrollTop=0;
   }
   go('login');
+  // 状态栏实时时钟（显示本机真实时间 HH:MM，每秒校准）
+  function tickClock(){
+    var d=new Date();
+    var hh=('0'+d.getHours()).slice(-2), mm=('0'+d.getMinutes()).slice(-2);
+    var el=document.querySelector('.statusbar .time');
+    if(el) el.textContent=hh+':'+mm;
+  }
+  tickClock(); setInterval(tickClock,1000);
 </script>
 </body>
 </html>
